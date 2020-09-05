@@ -1,0 +1,24 @@
+{
+  "name": "lcrecepciones",
+  "version": "1.0.0",
+  "description": "Sistema CRUD para Recepciones",
+  "main": "index.js",
+  "dependencies": {
+    "electron": "^10.1.1",
+    "mongoose": "^5.10.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rvilov/LcRecepciones.git"
+  },
+  "author": "Ricardo Viloria (rvilov)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rvilov/LcRecepciones/issues"
+  },
+  "homepage": "https://github.com/Rvilov/LcRecepciones#readme"
+}
