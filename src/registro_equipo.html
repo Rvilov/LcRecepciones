@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Equipos</title>
+</head>
+<body>
+    <form id="registroCliente">
+        <input type="text" id="cedula_rif" placeholder="Cedula o Rif">
+        <input type="text" id="nombre" placeholder="Nombres">
+        <input type="text" placeholder="Apellidos" id="apellido">
+        <input type="text" placeholder="Numero 1" id="numero1">
+        <input type="text" id="numero2" placeholder="Numero 2"> 
+        <button type="submit" id="guardarCliente"">Registrar Cliente</button>       
+    </form>
+
+    <br>
+    <br>
+
+    <form id="registroEquipo">
+        <input type="text" id="codigo_c" placeholder="Codigo del cliente"disabled>
+        <select name="tipo" id="tipo" aria-placeholder="Tipo">
+            <option value="laptop">Laptop</option>
+            <option value="pc">PC de Escritorio</option>
+            <option value="impresora">Impresora</option>
+            <option value="toner">Toner</option>
+            <option value="telefono">Telefono</option>
+            <option value="ups">UPS</option>
+            <option value="otro">Otros</option>
+        </select>
+        <input type="text" id="modelo" placeholder="Modelo">
+        <input type="text" id="serial" placeholder="Serial">
+        <textarea id="caracteristicas" placeholder="Caracteristicas"></textarea>
+        <textarea id="falla" placeholder="Fallas y Observaciones"></textarea> 
+        <select id="tecnico" placeholder="Tecnico">
+            <!-- se agrega tecnicos por medio del registro -->
+        </select>  
+        
+        <button type="submit" id="guardarEquipo">Registrar</button>
+    </form>
+</body>
+<script src="./ui/app.js"></script>
+</html>

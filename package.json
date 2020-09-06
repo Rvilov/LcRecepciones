@@ -2,7 +2,7 @@
   "name": "lcrecepciones",
   "version": "1.0.0",
   "description": "Sistema CRUD para Recepciones",
-  "main": "index.js",
+  "main": "src/registro_equipo.js",
   "dependencies": {
     "electron": "^10.1.1",
     "mongoose": "^5.10.3"

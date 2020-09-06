@@ -1,4 +1,4 @@
-const {model,Schema} = required("mongoose");
+const {model,Schema} = require("mongoose");
 
 const equipo = new Schema({
     tipo:{
@@ -29,12 +29,18 @@ const equipo = new Schema({
     },
     codigo_t:{
         type: String,
-        requiered: true
+        required: true
     }
 
 });
 
 const cliente = new Schema({
+    cedula_rif:{
+        type: String,
+        required: true,
+        index: true,
+        unique: true
+    },
     nombre:{
         type:String,
         required: true
@@ -43,12 +49,7 @@ const cliente = new Schema({
         type: String,
         required: true
     },
-    cedula_rif:{
-        type: String,
-        required: true,
-        index: true
-    },
-    numero1:{
+       numero1:{
         type: String,
         required: true       
     },
@@ -80,7 +81,9 @@ const tecnico = new Schema({
 })
 
 equipo.index({serial: 1});
-cliente.index({cedula_rif: 1}, {unique: true});
+cliente.index({cedula_rif: 1, unique: true});
 tecnico.index({cedula: 1}, {unique: true});
 
-module.exports = model("servicios", (equipo,cliente,tecnico));
+module.exports = model("cliente", cliente);
+// module.exports = model("equipo", equipo);
+// module.exports = model("tecnico", tecnico);
