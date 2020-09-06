@@ -10,6 +10,7 @@ const {ipcRenderer, ipcMain} = require("electron");
 
 
 let clientes = [];
+
 formC.addEventListener("submit", e =>{
     e.preventDefault();
 
