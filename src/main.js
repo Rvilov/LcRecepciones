@@ -1,5 +1,6 @@
 const {BrowserWindow,ipcMain,Menu,app} = require("electron");
 const cliente = require("./models/task.js");
+const tecnico = require("./models/task.js");
 
 function createWindow(){
     const window = new BrowserWindow({
@@ -31,7 +32,7 @@ function registrarTecnicoWindow(){
 
   
 
-    window.setMenu(null);
+    // window.setMenu(null);
 
     window.loadFile("src/registro_tecnico.html");
 }
@@ -41,7 +42,18 @@ ipcMain.on("nuevo-cliente", async (e,args) =>{
     const clienteRegistrado = await nuevoCliente.save();
     console.log(clienteRegistrado);
     e.reply("nuevo-cliente-registrado", JSON.stringify(clienteRegistrado));
+});
+
+// FUNCIONES DE REGISTRO_TECNICO
+
+ipcMain.on("nuevo-tecnico", async (e,args)=>{
+    const nuevoTecnico = new tecnico(args);
+    const tecnicoRegistrado = await nuevoTecnico.save();
+    console.log(tecnicoRegistrado);
+    e.reply("nuevo-tecnico-registrado", JSON.stringify(tecnicoRegistrado));
 })
+
+
 module.exports={createWindow};
 
 // ----------------------------------------TEMPLATE MENU-----------------------------------

@@ -1,4 +1,4 @@
-
+// elementos de registrar cliente 
 const formC = document.querySelector("#registroCliente");
 const nombreC = document.querySelector("#nombre");
 const apellidoC = document.querySelector("#apellido");
@@ -6,10 +6,12 @@ const cedulaRifC = document.querySelector("#cedula_rif");
 const numero_1 = document.querySelector("#numero1");
 const numero_2 = document.querySelector("#numero2");
 
+
 const {ipcRenderer, ipcMain} = require("electron");
 
 
 let clientes = [];
+
 
 formC.addEventListener("submit", e =>{
     e.preventDefault();
@@ -31,3 +33,5 @@ ipcRenderer.on("nuevo-cliente-registrado", (e,args)=>{
     clientes.push(nuevoCliente);
     alert("Cliente Registrado");
 })
+
+

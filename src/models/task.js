@@ -72,7 +72,8 @@ const tecnico = new Schema({
     cedula:{
         type: String,
         required: true,
-        index: true
+        index: true,
+        unique: true
     },
     numero:{
         type: String,
@@ -82,8 +83,8 @@ const tecnico = new Schema({
 
 equipo.index({serial: 1});
 cliente.index({cedula_rif: 1, unique: true});
-tecnico.index({cedula: 1}, {unique: true});
+tecnico.index({cedula: 1, unique: true});
 
 module.exports = model("cliente", cliente);
 // module.exports = model("equipo", equipo);
-// module.exports = model("tecnico", tecnico);
+module.exports = model("tecnico", tecnico);
