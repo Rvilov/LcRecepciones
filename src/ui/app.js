@@ -7,13 +7,50 @@ const numero_1 = document.querySelector("#numero1");
 const numero_2 = document.querySelector("#numero2");
 
 
+//elementos para registrar equipo
+
+
+const formE = document.querySelector("#registroEquipo");
+const tipoE = document.querySelector("#tipo");
+const modeloE = document.querySelector("#modelo");
+const serialE = document.queryCommandEnabled("#serial");
+const fallaE = document.querySelector("#falla");
+const tecnicoId = document.querySelector("#tecnico")
+
+
 const {ipcRenderer, ipcMain} = require("electron");
 
 
 let clientes = [];
+let tecnicos =[];
+let equipos = [];
 
+function aggTecnicos(tecnicos){ // funcion de tecnico 
+    tecnicoId.innerHTML = "";
+    tecnicos.map(t =>{
+        tecnicoId.innerHTML += `
+        <option value="${t._id}">${t.nombre} ${t.apellido}</option>
+        `
+    });
+};
 
-formC.addEventListener("submit", e =>{
+formE.addEventListener("submit", e =>{ //form para el submit de clientes
+    e.preventDefault();
+
+    const equipo = {
+        codigo_c: cedulaRifC.value,
+        tipo: tipoE.value,
+        modelo: modeloE.value,
+        serial: serialE.value,
+        falla: fallaE.value,
+        codigo_t: tecnicoId.value
+    }
+    ipcRenderer.send("nuevo-equipo",equipo);
+    formE.reset();
+    
+});
+
+formC.addEventListener("submit", e =>{ //form para el submit de clientes
     e.preventDefault();
 
     const cliente = {
@@ -25,13 +62,20 @@ formC.addEventListener("submit", e =>{
     }
     ipcRenderer.send("nuevo-cliente",cliente);
     formC.reset();
-
+    
 });
 
 ipcRenderer.on("nuevo-cliente-registrado", (e,args)=>{
     const nuevoCliente = JSON.parse(args);
     clientes.push(nuevoCliente);
     alert("Cliente Registrado");
+
 })
 
+ipcRenderer.send("obtener-tecnicos"); // funcion de tecnico
+ipcRenderer.on("enviar-tecnicos",(e,args)=>{ // funcion de tecnico
+    const tecnicorecibido = JSON.parse(args);
+    tecnicos = tecnicorecibido;
+    aggTecnicos(tecnicos);
+});
 
