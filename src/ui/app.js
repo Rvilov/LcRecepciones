@@ -13,7 +13,8 @@ const numero_2 = document.querySelector("#numero2");
 const formE = document.querySelector("#registroEquipo");
 const tipoE = document.querySelector("#tipo");
 const modeloE = document.querySelector("#modelo");
-const serialE = document.queryCommandEnabled("#serial");
+const serialE = document.querySelector("#serial");
+const caracteristicasE = document.querySelector("#caracteristicas")
 const fallaE = document.querySelector("#falla");
 const tecnicoId = document.querySelector("#tecnico")
 
@@ -42,6 +43,7 @@ formE.addEventListener("submit", e =>{ //form para el submit de clientes
         tipo: tipoE.value,
         modelo: modeloE.value,
         serial: serialE.value,
+        caracteristicas: caracteristicasE.value,
         falla: fallaE.value,
         codigo_t: tecnicoId.value
     }
@@ -61,7 +63,7 @@ formC.addEventListener("submit", e =>{ //form para el submit de clientes
         numero2: numero_2.value
     }
     ipcRenderer.send("nuevo-cliente",cliente);
-    formC.reset();
+  
     
 });
 
@@ -79,3 +81,9 @@ ipcRenderer.on("enviar-tecnicos",(e,args)=>{ // funcion de tecnico
     aggTecnicos(tecnicos);
 });
 
+ipcRenderer.on("nuevo-equipo-registrado", (e,args)=>{
+    const nuevoEquipo = JSON.parse(args);
+    equipos.push(nuevoEquipo);
+    alert("Equipo Registrado");
+
+})

@@ -1,7 +1,13 @@
 const {BrowserWindow,ipcMain,Menu,app} = require("electron");
-const cliente = require("./models/task.js");
-const tecnico = require("./models/task.js");
-const equipo = require("./models/task.js");
+
+//
+const {collectionCliente} = require("./models/task.js");
+const {collectionEquipo} = require("./models/task.js");
+const {collectionTecnico} = require("./models/task.js");
+
+// const cliente = require("./models/task.js");
+// const tecnico = require("./models/task.js");
+// const equipo = require("./models/task.js");
 
 function createWindow(){
     const window = new BrowserWindow({
@@ -39,7 +45,7 @@ function registrarTecnicoWindow(){
 }
 
 ipcMain.on("nuevo-cliente", async (e,args) =>{
-    const nuevoCliente = new cliente(args);
+    const nuevoCliente = new collectionCliente(args);
     const clienteRegistrado = await nuevoCliente.save();
     console.log(clienteRegistrado);
     e.reply("nuevo-cliente-registrado", JSON.stringify(clienteRegistrado));
@@ -48,7 +54,7 @@ ipcMain.on("nuevo-cliente", async (e,args) =>{
 // FUNCIONES DE REGISTRO_TECNICO
 
 ipcMain.on("nuevo-tecnico", async (e,args)=>{
-    const nuevoTecnico = new tecnico(args);
+    const nuevoTecnico = new collectionTecnico(args);
     const tecnicoRegistrado = await nuevoTecnico.save();
     console.log(tecnicoRegistrado);
     e.reply("nuevo-tecnico-registrado", JSON.stringify(tecnicoRegistrado));
@@ -61,16 +67,21 @@ module.exports={createWindow};
 
 ipcMain.on("obtener-tecnicos", async (e,args)=>{
 
-    const tecnicos = await tecnico.find();
+    const tecnicos = await collectionTecnico.find();
     e.reply("enviar-tecnicos", JSON.stringify(tecnicos));
 });
 
 ipcMain.on("nuevo-equipo" ,async (e,args)=>{
-    const nuevoEquipo = new equipo(args);
+    const nuevoEquipo = new collectionEquipo(args);
     const equipoRegistrado = await nuevoEquipo.save();
     console.log(equipoRegistrado);
     e.reply("nuevo-equipo-registrado",JSON.stringify(equipoRegistrado));
 });
+
+
+
+
+
 // ----------------------------------------TEMPLATE MENU-----------------------------------
 
 const templateMenu = [ //menu personalizado para registro_equipo.html

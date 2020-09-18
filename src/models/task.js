@@ -1,4 +1,4 @@
-const {model,Schema} = require("mongoose");
+const {model,Schema, Mongoose} = require("mongoose");
 
 const equipo = new Schema({
     codigo_c:{
@@ -35,6 +35,8 @@ const equipo = new Schema({
 
 });
 
+const collectionEquipo = model ("collectionEquipo" , equipo);
+
 const cliente = new Schema({
     cedula_rif:{
         type: String,
@@ -60,6 +62,7 @@ const cliente = new Schema({
     }
 
 });
+const collectionCliente = model("collectionCliente", cliente)
 
 const tecnico = new Schema({
     nombre:{
@@ -81,11 +84,15 @@ const tecnico = new Schema({
         required: true       
     }
 })
+const collectionTecnico = model("collectionTecnico", tecnico);
 
 equipo.index({serial: 1});
 cliente.index({cedula_rif: 1, unique: true});
 tecnico.index({cedula: 1, unique: true});
 
-module.exports = model("cliente", cliente);
-// module.exports = model("equipo", equipo);
-module.exports = model("tecnico", tecnico);
+module.exports = {
+    collectionCliente : collectionCliente,
+    collectionEquipo : collectionEquipo,
+    collectionTecnico: collectionTecnico
+}
+
