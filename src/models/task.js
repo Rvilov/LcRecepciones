@@ -1,6 +1,10 @@
 const {model,Schema} = require("mongoose");
 
 const equipo = new Schema({
+    codigo_c:{
+        type: String,
+        required:true
+    },
     tipo:{
         type: String,
         required: true,
@@ -23,10 +27,7 @@ const equipo = new Schema({
         type: String,
         required:true
     },
-    codigo_c:{
-        type: String,
-        required:true
-    },
+   
     codigo_t:{
         type: String,
         required: true
