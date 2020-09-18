@@ -4,41 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/app.css">
     <title>Registro de Equipos</title>
 </head>
 <body>
-    <form id="registroCliente">
-        <input type="text" id="cedula_rif" placeholder="Cedula o Rif">
-        <input type="text" id="nombre" placeholder="Nombres">
-        <input type="text" placeholder="Apellidos" id="apellido">
-        <input type="text" placeholder="Numero 1" id="numero1">
-        <input type="text" id="numero2" placeholder="Numero 2"> 
-        <button type="submit" id="guardarCliente"">Registrar Cliente</button>       
+    <form id="registroCliente" class="centrar">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="cedula_rif">Cedula o Rif</label>
+                 <input class="form-control" type="text" id="cedula_rif" autofocus>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="nombre">Nombres</label>
+                <input class="form-control" type="text" id="nombre">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="apellido">Apellidos</label>
+                <input  class="form-control" type="text" id="apellido">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-sm-3"> 
+                <label for="numero1">Numero 1</label>
+                <input  class="form-control" type="text" id="numero1">
+            </div>   
+            <div class="form-group col-sm-3">
+                <label for="numero2">Numero 2</label>
+                <input  class="form-control" type="text" id="numero2"> 
+            </div>
+        </div>   
+            <button class="btn btn-primary" type="submit" id="guardarCliente"">Registrar Cliente</button>       
+        
     </form>
 
     <br>
     <br>
 
-    <form id="registroEquipo">
-        <input type="text" id="codigo_c" placeholder="Codigo del cliente"disabled>
-        <select name="tipo" id="tipo">
-            <option value="laptop">Laptop</option>
-            <option value="pc">PC de Escritorio</option>
-            <option value="impresora">Impresora</option>
-            <option value="toner">Toner</option>
-            <option value="telefono">Telefono</option>
-            <option value="ups">UPS</option>
-            <option value="otro">Otros</option>
-        </select>
-        <input type="text" id="modelo" placeholder="Modelo">
-        <input type="text" id="serial" placeholder="Serial">
-        <textarea id="caracteristicas" placeholder="Caracteristicas"></textarea>
-        <textarea id="falla" placeholder="Fallas y Observaciones"></textarea> 
-        <select id="tecnico" placeholder="Tecnico">
-            <!-- se agrega tecnicos por medio del registro -->
-        </select>  
-        
-        <button type="submit" id="guardarEquipo">Registrar Equipo</button>
+    <form id="registroEquipo" class="centrar">
+        <div class="form-row">
+            <div id="codigoCliente"class="form-group col-sm-3">
+                <label for="codigo_c">Codigo Cliente </label>
+                <input class="form-control" type="text" id="codigo_c" placeholder="Codigo del cliente"disabled>
+                </div>
+            <div class="form-group col-sm-3">
+                <label for="tipo">Tipo de Equipo</label>  
+                <select class="form-control"  name="tipo" id="tipo">
+                    <option value="laptop">Laptop</option>
+                    <option value="pc">PC de Escritorio</option>
+                    <option value="impresora">Impresora</option>
+                    <option value="toner">Toner</option>
+                    <option value="telefono">Telefono</option>
+                    <option value="ups">UPS</option>
+                    <option value="otro">Otros</option>
+                </select>
+            </div>
+                <div class="form-group col-sm-3">
+                    <label for="modelo">Modelo</label>
+                    <input  class="form-control" type="text" id="modelo" placeholder="Ejm: HP dv600">
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="serial">Serial</label>
+                    <input class="form-control" type="text" id="serial">
+            </div>
+            <div class="form-group col-sm-3">
+                    <label for="caracteristicas">caracteristicas</label>
+                    <textarea class="form-control" id="caracteristicas" placeholder="Deja bateria y cargador"></textarea>
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="falla">Falla</label>
+                    <textarea class="form-control" id="falla" placeholder="Formato con respaldo"></textarea> 
+            </div>
+            <div class="form-group col-sm-3">
+                    <label for="tecnico">Tecnico</label>
+                    <select class="form-control" id="tecnico" placeholder="Tecnico">
+                    <!-- se agrega tecnicos por medio del registro -->
+                    </select> 
+            </div> 
+        </div>
+            <button class="btn btn-primary" type="submit" id="guardarEquipo">Registrar Equipo</button>
     </form>
 </body>
 <script src="./ui/app.js"></script>

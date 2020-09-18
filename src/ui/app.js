@@ -17,7 +17,7 @@ const serialE = document.querySelector("#serial");
 const caracteristicasE = document.querySelector("#caracteristicas")
 const fallaE = document.querySelector("#falla");
 const tecnicoId = document.querySelector("#tecnico")
-
+const clienteId = document.querySelector("#codigoCliente")
 
 const {ipcRenderer, ipcMain} = require("electron");
 
@@ -34,6 +34,17 @@ function aggTecnicos(tecnicos){ // funcion de tecnico
         `
     });
 };
+
+function aggIdEnEquipo(cliente){
+    clienteId.innerHTML="";
+    for (let i = 0; i < 1; i++){
+        const clientes = cliente[i];
+        clienteId.innerHTML=`
+    <label for="codigo_c">Codigo Cliente </label>
+    <input class="form-control" type="text" id="codigo_c" placeholder="${clientes._id}"disabled>`
+    }
+    
+}
 
 formE.addEventListener("submit", e =>{ //form para el submit de clientes
     e.preventDefault();
@@ -70,10 +81,11 @@ formC.addEventListener("submit", e =>{ //form para el submit de clientes
 ipcRenderer.on("nuevo-cliente-registrado", (e,args)=>{
     const nuevoCliente = JSON.parse(args);
     clientes.push(nuevoCliente);
+    aggIdEnEquipo(clientes);
     alert("Cliente Registrado");
-
+    
 })
-
+ipcRenderer.send("obtener-idC-para-equipo");//Obtener el id para colocarlo en el input disabled
 ipcRenderer.send("obtener-tecnicos"); // funcion de tecnico
 ipcRenderer.on("enviar-tecnicos",(e,args)=>{ // funcion de tecnico
     const tecnicorecibido = JSON.parse(args);

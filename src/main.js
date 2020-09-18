@@ -30,8 +30,8 @@ function createWindow(){
 
 function registrarTecnicoWindow(){
     const window = new BrowserWindow({
-        width: 500,
-        height: 300,
+        width: 600,
+        height: 400,
         webPreferences:{
             nodeIntegration: true
         }
@@ -78,7 +78,9 @@ ipcMain.on("nuevo-equipo" ,async (e,args)=>{
     e.reply("nuevo-equipo-registrado",JSON.stringify(equipoRegistrado));
 });
 
-
+// ipcMain.on("obtener-idC-para-equipo",async(e,args)=>{
+    
+// })
 
 
 
