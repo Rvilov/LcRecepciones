@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/app.css">
+    <title>Registro Cliente</title>
+</head>
+<body>
+    <form id="registroCliente" class="centrar">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="cedula_rif">Cedula o Rif</label>
+                 <input class="form-control" type="text" id="cedula_rif" autofocus>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="nombre">Nombres</label>
+                <input class="form-control" type="text" id="nombre">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="apellido">Apellidos</label>
+                <input  class="form-control" type="text" id="apellido">
+            </div>
+           
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-sm-3"> 
+                <label for="numero1">Numero 1</label>
+                <input  class="form-control" type="text" id="numero1">
+            </div>   
+            <div class="form-group col-sm-3">
+                <label for="numero2">Numero 2</label>
+                <input  class="form-control" type="text" id="numero2"> 
+            </div>
+            <div class="form-group col-md-3">
+                <label for="direccion">Direccion</label>
+                <textarea class="form-control" name="" id="direccion"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit" id="guardarCliente" style="height: 50px;">Registrar Cliente</button>  
+        </div>   
+                 
+        
+    </form>
+</body>
+<script src="./ui/appC.js"></script>
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/popper.js/dist/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</html>

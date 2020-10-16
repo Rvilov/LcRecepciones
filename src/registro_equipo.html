@@ -8,6 +8,7 @@
     <title>Registro de Equipos</title>
 </head>
 <body>
+    
     <form id="registroCliente" class="centrar">
         <div class="form-row">
             <div class="form-group col-md-3">
@@ -22,6 +23,7 @@
                 <label for="apellido">Apellidos</label>
                 <input  class="form-control" type="text" id="apellido">
             </div>
+           
         </div>
 
         <div class="form-row">
@@ -33,8 +35,13 @@
                 <label for="numero2">Numero 2</label>
                 <input  class="form-control" type="text" id="numero2"> 
             </div>
+            <div class="form-group col-md-3">
+                <label for="direccion">Direccion</label>
+                <textarea class="form-control" name="" id="direccion" cols="10" rows="5"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit" id="guardarCliente" style="height: 50px;">Registrar Cliente</button>  
         </div>   
-            <button class="btn btn-primary" type="submit" id="guardarCliente"">Registrar Cliente</button>       
+                 
         
     </form>
 
@@ -86,7 +93,8 @@
     </form>
 </body>
 <script src="./ui/app.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/popper.js/dist/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </html>

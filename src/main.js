@@ -36,20 +36,50 @@ function registrarTecnicoWindow(){
             nodeIntegration: true
         }
     });
-
-  
-
     // window.setMenu(null);
 
     window.loadFile("src/registro_tecnico.html");
 }
 
-ipcMain.on("nuevo-cliente", async (e,args) =>{
-    const nuevoCliente = new collectionCliente(args);
-    const clienteRegistrado = await nuevoCliente.save();
-    console.log(clienteRegistrado);
-    e.reply("nuevo-cliente-registrado", JSON.stringify(clienteRegistrado));
+function registrarClienteWindow(){
+    
+    const window = new BrowserWindow({
+        width: 900,
+        height: 500,
+        webPreferences:{
+            nodeIntegration: true
+        }
+    });
+   
+
+    window.loadFile("src/registro_cliente.html");
+}
+
+ipcMain.on("comprueba-existencia", async (e,args) =>{
+    
+ collectionCliente.findOne({ cedula_rif: args}, function (err, clt) {
+    console.log('mostramos los valores: ' + clt);
+    if(clt==null){
+      console.log("no existe")
+      registrarClienteWindow();
+      e.reply("cliente-no-encontrado")
+    }else {
+     console.log('Los datos ya existen');
+      e.reply("cliente-existe",JSON.stringify(clt));
+    }
+    });
+    
+
 });
+
+ipcMain.on("nuevo-cliente",async(e,args)=>{
+    const nuevoCliente = new collectionCliente(args);
+        const clienteRegistrado = await nuevoCliente.save();
+        console.log(clienteRegistrado);
+        e.reply("nuevo-cliente-registrado", JSON.stringify(clienteRegistrado));
+})
+
+
 
 // FUNCIONES DE REGISTRO_TECNICO
 
@@ -78,9 +108,9 @@ ipcMain.on("nuevo-equipo" ,async (e,args)=>{
     e.reply("nuevo-equipo-registrado",JSON.stringify(equipoRegistrado));
 });
 
-// ipcMain.on("obtener-idC-para-equipo",async(e,args)=>{
-    
-// })
+ipcMain.on("update-form-cliente", async(e,args)=>{
+
+ })
 
 
 

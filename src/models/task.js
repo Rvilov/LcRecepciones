@@ -31,6 +31,9 @@ const equipo = new Schema({
     codigo_t:{
         type: String,
         required: true
+    },
+    fecha_registro:{
+        type: Date
     }
 
 });
@@ -59,6 +62,9 @@ const cliente = new Schema({
     numero2:{
         type: String,
         required: true
+    },
+    direccion:{
+        type: String,
     }
 
 });
